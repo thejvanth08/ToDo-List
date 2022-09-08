@@ -1,0 +1,34 @@
+<%- include("header") -%>
+    <div class="box" id = "heading">
+      <h1><%=listTitle%></h1>
+    </div>
+
+    <div class="box">
+
+        <% newListItems.forEach(function(item){ %>
+          <!-- we need another form to send data after clicking the checkbox
+          delete -> new route responsible for deleting the item-->
+          <form action ="/delete" method = "post">
+
+
+          <div class="item">
+            <!-- assigning value(item._id) to checkbox to delete the actual item
+            each item added to list will have separate _id value in db; so we can delete the item with that particular id; form is triggered when checkbox is checked-->
+            <input type="checkbox" onchange="this.form.submit()" name="checkbox" value= "<%=item._id%>">
+            <p><%= item.name %></p>
+          </div>
+          <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+        </form>
+
+        <% }); %>
+        <!-- only choosing the name from the every document of items collection -->
+
+        <form class="" action="/" method="post">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+          <!-- to turn off auto suggestion while giving new input or adding new item off the autocomplete attribute in input -->
+          <button type="submit" name="list" value= <%= listTitle %> >+</button>
+        </form>
+
+    </div>
+
+<%- include("footer") -%>
