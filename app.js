@@ -13,7 +13,7 @@ app.set('view engine', 'ejs'); //it tells that app which is generated using expr
 app.use(bodyParser.urlencoded({extended: true}));//setting up body-parser to be used
 app.use(express.static("public"));//(explicitly telling express) to serve the css file inside public folder as static file and visible in localhost
 
-mongoose.connect("mongodb+srv://Thejvanth:thejvanth2004@cluster0.oys6ory.mongodb.net/todolistDB");//this url is where mongodb will connect locally
+mongoose.connect("mongodb+srv://username:password@cluster0.oys6ory.mongodb.net/todolistDB");//this url is where mongodb will connect locally
 
 const itemsSchema = {//schema for items
   name: String
